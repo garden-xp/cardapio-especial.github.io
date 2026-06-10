@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Garden Experience — Cardápio Dia dos Namorados</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Cinzel:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --green-deep:   #1C3A2A;
+    --green-mid:    #2A5240;
+    --green-light:  #A8D5B5;
+    --wine-deep:    #3D1A28;
+    --wine-mid:     #7A1C2E;
+    --wine-light:   #B0394A;
+    --rose:         #D4748A;
+    --rose-pale:    #F2C4C4;
+    --gold:         #C4A96A;
+    --gold-dark:    #7A5C28;
+    --cream:        #FAF7F0;
+    --cream-warm:   #F5F0E8;
+    --cream-blush:  #F9F0F2;
+    --text-main:    #1C3A2A;
+    --text-sub:     #4A5A50;
+    --text-light:   #5A6E62;
+
+    /* ── fluid font scale (base 18px → 20px) ── */
+    --fs-xs:   clamp(11px, 2.4vw, 13px);
+    --fs-sm:   clamp(14px, 3.4vw, 16px);
+    --fs-base: clamp(16px, 4vw,   18px);
+    --fs-md:   clamp(18px, 4.6vw, 21px);
+    --fs-lg:   clamp(21px, 5.2vw, 25px);
+    --fs-xl:   clamp(24px, 6vw,   30px);
+    --fs-hero: clamp(42px, 12vw,  58px);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream-warm);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: var(--fs-base);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .menu-wrapper {
+    max-width: 720px;
+    margin: 0 auto;
+    background: var(--cream);
+    overflow: hidden;
+  }
+
+  /* ══ COVER ═══════════════════════════════════ */
+  .cover {
+    background: linear-gradient(160deg, #2A1520 0%, #3D1A28 42%, #1C3A2A 100%);
+    padding: clamp(44px, 9vw, 64px) clamp(22px, 6vw, 52px) clamp(40px, 8vw, 56px);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover-logo { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 30px; flex-wrap: wrap; }
+  .cover-logo-text { font-family: 'Cinzel', serif; font-size: var(--fs-xs); letter-spacing: 4px; color: var(--gold); text-transform: uppercase; }
+  .cover-logo-sub  { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 3px; color: rgba(196,169,106,0.55); text-transform: uppercase; margin-top: 3px; }
+  .cover-tag  { font-family: 'Cinzel', serif; font-size: var(--fs-xs); letter-spacing: 5px; color: var(--rose-pale); text-transform: uppercase; margin-bottom: 14px; opacity: .9; display: block; }
+  .cover-headline { font-family: 'Cormorant Garamond', serif; font-size: var(--fs-hero); font-weight: 300; line-height: 1.08; color: var(--cream); margin-bottom: 12px; }
+  .cover-headline em { font-style: italic; color: var(--rose-pale); }
+  .cover-subtitle { font-family: 'Cormorant Garamond', serif; font-size: var(--fs-sm); font-style: italic; color: rgba(250,247,240,.65); margin-bottom: 34px; letter-spacing: 1px; }
+  .cover-date { font-family: 'Cinzel', serif; font-size: var(--fs-xs); letter-spacing: 4px; color: var(--gold); text-transform: uppercase; opacity: .8; }
+
+  /* ══ LAYOUT ══════════════════════════════════ */
+  .content { padding: 0 clamp(18px, 5.5vw, 44px) 52px; }
+
+  /* ══ SECTION HEADER ══════════════════════════ */
+  .section-header { text-align: center; padding: 40px 0 26px; }
+  .section-tag   { font-family: 'Cinzel', serif; font-size: var(--fs-xs); letter-spacing: 5px; color: var(--wine-light); text-transform: uppercase; margin-bottom: 9px; display: block; }
+  .section-title { font-family: 'Cinzel', serif; font-size: var(--fs-md); font-weight: 500; color: var(--green-deep); letter-spacing: 2px; }
+
+  .botanical-strip { text-align: center; padding: 10px 0; opacity: .55; overflow: hidden; }
+
+  /* ══ SUB SECTION ═════════════════════════════ */
+  .sub-section { margin-bottom: 30px; }
+  .sub-section-header { display: flex; align-items: center; gap: 12px; margin: 30px 0 20px; }
+  .sub-section-header .line { flex: 1; height: .5px; background: rgba(196,169,106,.4); }
+  .sub-section-title { font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 4px; color: var(--green-mid); text-transform: uppercase; white-space: nowrap; }
+
+  /* ══ DISH ════════════════════════════════════ */
+  .dish {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 14px;
+    align-items: start;
+    margin-bottom: 26px;
+    padding-bottom: 26px;
+    border-bottom: .5px solid rgba(196,169,106,.2);
+  }
+  .dish:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+  .dish-name  { font-family: 'Cormorant Garamond', serif; font-size: var(--fs-lg); font-weight: 500; color: var(--text-main); line-height: 1.2; margin-bottom: 7px; }
+  .dish-name em { font-style: italic; color: var(--green-mid); }
+  .dish-desc  { font-family: 'Cormorant Garamond', serif; font-size: var(--fs-base); font-weight: 300; line-height: 1.7; color: var(--text-sub); font-style: italic; }
+  .dish-badge { background: var(--wine-mid); color: var(--rose-pale); font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; padding: 5px 11px; margin-top: 9px; display: inline-block; }
+  .dish-price { font-family: 'Cormorant Garamond', serif; font-size: var(--fs-md); font-weight: 400; color: var(--gold-dark); white-space: nowrap; padding-top: 5px; }
+
+  .dish-highlight { background: var(--cream-blush); border: .5px solid rgba(176,57,74,.25); padding: 20px; margin-bottom: 26px; position: relative; }
+  .dish-highlight::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: linear-gradient(to bottom, var(--wine-light), var(--wine-mid)); }
+
+  /* ══ ADICIONAL ═══════════════════════════════ */
+  .adicional { display: grid; grid-template-columns: 1fr auto; gap: 14px; align-items: start; margin-bottom: 10px; padding: 12px 16px; background: rgba(196,169,106,.07); border-left: 2px solid rgba(196,169,106,.35); }
+  .adicional-label { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 5px; }
+  .adicional-name  { font-family: 'Cormorant Garamond', serif; font-size: var(--fs-base); font-weight: 500; color: var(--green-mid); }
+  .adicional-desc  { font-family: 'Cormorant Garamond', serif; font-size: var(--fs-sm); font-style: italic; color: var(--text-light); line-height: 1.5; }
+  .adicional-price { font-family: 'Cormorant Garamond', serif; font-size: var(--fs-base); color: var(--gold-dark); white-space: nowrap; padding-top: 2px; }
+
+  /* ══ PAIR NOTES ══════════════════════════════ */
+  .pair-note, .pair-note-red {
+    padding: 16px 20px;
+    margin: 22px 0;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: var(--fs-base);
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.7;
+    display: flex;
+    align-items: flex-start;
+    gap: 13px;
+  }
+  .pair-note     { background: var(--green-mid); color: #E8D5A0; }
+  .pair-note-red { background: #5C1A28; color: #F5DADA; }
+  .pair-note .leaf-icon, .pair-note-red .leaf-icon { opacity: .7; flex-shrink: 0; margin-top: 3px; }
+
+  /* ══ TWO COL ═════════════════════════════════ */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .col-title { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; margin-bottom: 16px; padding-bottom: 9px; border-bottom: .5px solid rgba(196,169,106,.3); }
+  .mini-dish { margin-bottom: 18px; }
+  .mini-dish-name { font-family: 'Cormorant Garamond', serif; font-size: var(--fs-md); font-weight: 500; color: var(--text-main); margin-bottom: 4px; }
+  .mini-dish-desc { font-family: 'Cormorant Garamond', serif; font-size: var(--fs-sm); font-weight: 300; font-style: italic; color: var(--text-light); line-height: 1.55; }
+  .mini-price     { font-family: 'Cormorant Garamond', serif; font-size: var(--fs-sm); color: var(--gold-dark); margin-top: 4px; }
+
+  /* ══ DRINKS AUTORAIS — banner wrapper ════════ */
+  .autorais-banner {
+    background: linear-gradient(170deg, #0E1A13 0%, #16261C 55%, #0E1A13 100%);
+    margin: 0 calc(clamp(18px, 5.5vw, 44px) * -1);
+    padding: clamp(36px, 8vw, 56px) clamp(22px, 5.5vw, 44px) clamp(32px, 7vw, 48px);
+    position: relative;
+    overflow: hidden;
+  }
+  .autorais-banner::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 90% 35% at 50% 0%,   rgba(168,213,181,.07) 0%, transparent 70%),
+      radial-gradient(ellipse 70% 25% at 50% 100%,  rgba(168,213,181,.04) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  /* header inside banner */
+  .autorais-header-block { text-align: center; margin-bottom: 40px; }
+  .autorais-tag  { font-family: 'Cinzel', serif; font-size: var(--fs-xs); letter-spacing: 5px; color: rgba(168,213,181,.65); text-transform: uppercase; margin-bottom: 12px; display: block; }
+  .autorais-title{ font-family: 'Cinzel', serif; font-size: clamp(22px, 6vw, 28px); font-weight: 500; color: var(--cream); letter-spacing: 3px; margin-bottom: 8px; }
+  .autorais-sub  { font-family: 'Cormorant Garamond', serif; font-size: var(--fs-base); font-style: italic; color: rgba(168,213,181,.45); }
+  .autorais-divider { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 20px; }
+  .autorais-divider-line { flex: 0 0 48px; height: .5px; background: rgba(168,213,181,.22); }
+  .autorais-divider-dot  { width: 4px; height: 4px; border-radius: 50%; background: rgba(168,213,181,.38); }
+
+  /* card */
+  .autoral-card { padding: 26px 0; border-bottom: .5px solid rgba(168,213,181,.1); position: relative; }
+  .autoral-card:last-of-type { border-bottom: none; }
+
+  .autoral-meta {
+    display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 4px;
+  }
+  .autoral-num   { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 4px; color: rgba(168,213,181,.3); flex-shrink: 0; }
+  .autoral-price-inline { font-family: 'Cinzel', serif; font-size: 13px; letter-spacing: 2px; color: rgba(168,213,181,.65); white-space: nowrap; flex-shrink: 0; }
+
+  .autoral-name-large { font-family: 'Cormorant Garamond', serif; font-size: var(--fs-xl); font-weight: 500; color: var(--cream); line-height: 1.1; margin-bottom: 10px; letter-spacing: .3px; }
+  .autoral-name-large em { font-style: italic; color: var(--green-light); }
+
+  /* ── profile pills ── */
+  .autoral-profile { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 12px; }
+  .apill {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    padding: 5px 11px;
+    border-radius: 2px;
+    border: .5px solid transparent;
+    line-height: 1;
+  }
+  .apill-green  { background: rgba(168,213,181,.10); border-color: rgba(168,213,181,.3);  color: rgba(168,213,181,.85); }
+  .apill-rose   { background: rgba(242,196,196,.08); border-color: rgba(242,196,196,.3);  color: rgba(242,196,196,.85); }
+  .apill-gold   { background: rgba(196,169,106,.08); border-color: rgba(196,169,106,.3);  color: rgba(196,169,106,.85); }
+  .apill-red    { background: rgba(176,57,74,.12);   border-color: rgba(176,57,74,.35);   color: rgba(242,150,165,.85); }
+
+  .autoral-ingredients {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: var(--fs-sm);
+    font-weight: 400;
+    color: rgba(168,213,181,.5);
+    letter-spacing: .6px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    line-height: 1.6;
+  }
+
+  .autoral-story {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: var(--fs-base);
+    font-style: italic;
+    font-weight: 300;
+    color: rgba(250,247,240,.52);
+    line-height: 1.8;
+    padding-left: 16px;
+    border-left: 1.5px solid rgba(168,213,181,.22);
+  }
+
+  /* price footer */
+  .autorais-price-footer {
+    margin-top: 32px;
+    border-top: .5px solid rgba(168,213,181,.15);
+    padding-top: 22px;
+    display: flex; align-items: center; justify-content: center; gap: 14px;
+  }
+  .autorais-price-label { font-family: 'Cormorant Garamond', serif; font-size: var(--fs-base); font-style: italic; color: rgba(250,247,240,.45); }
+  .autorais-price-sep   { width: 4px; height: 4px; border-radius: 50%; background: rgba(168,213,181,.3); flex-shrink: 0; }
+  .autorais-price-value { font-family: 'Cinzel', serif; font-size: 22px; letter-spacing: 3px; color: var(--green-light); }
+
+  /* ══ DRINKS CLÁSSICOS ════════════════════════ */
+  .drink-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+  .drink-item { padding: 16px 0; border-bottom: .5px solid rgba(196,169,106,.18); }
+  .drink-item:nth-child(odd)  { padding-right: 20px; border-right: .5px solid rgba(196,169,106,.18); }
+  .drink-item:nth-child(even) { padding-left: 20px; }
+
+  .drink-name  { font-family: 'Cormorant Garamond', serif; font-size: var(--fs-md); font-weight: 500; color: var(--text-main); margin-bottom: 4px; }
+  .drink-name em { font-style: italic; color: var(--green-mid); }
+  .drink-tags  { font-family: 'Cormorant Garamond', serif; font-size: var(--fs-sm); font-style: italic; color: var(--text-light); margin-bottom: 4px; line-height: 1.4; }
+  .drink-price { font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 2px; color: var(--gold-dark); }
+
+  /* ══ WINE BANNER ═════════════════════════════ */
+  .wine-banner {
+    background: linear-gradient(135deg, #3D1A28 0%, #5C2035 50%, #3D1A28 100%);
+    padding: clamp(30px, 6.5vw, 40px) clamp(22px, 5.5vw, 40px) clamp(26px, 5.5vw, 36px);
+    margin: 0 calc(clamp(18px, 5.5vw, 44px) * -1);
+    position: relative; overflow: hidden; text-align: center;
+  }
+  .wine-banner::before {
+    content: ''; position: absolute; inset: 0;
+    background: repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(255,255,255,.014) 20px, rgba(255,255,255,.014) 40px);
+    pointer-events: none;
+  }
+  .wine-header-tag   { font-family: 'Cinzel', serif; font-size: var(--fs-xs); letter-spacing: 5px; color: var(--rose-pale); text-transform: uppercase; margin-bottom: 9px; display: block; opacity: .9; }
+  .wine-header-title { font-family: 'Cinzel', serif; font-size: clamp(20px, 5.5vw, 25px); font-weight: 500; color: var(--cream); letter-spacing: 3px; margin-bottom: 7px; }
+  .wine-header-sub   { font-family: 'Cormorant Garamond', serif; font-size: var(--fs-base); font-style: italic; color: rgba(250,247,240,.6); margin-bottom: 28px; }
+
+  .wine-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(255,255,255,.08); border: .5px solid rgba(242,196,196,.15); }
+  .wine-item { background: rgba(61,26,40,.85); padding: 16px 18px; display: flex; align-items: center; gap: 12px; }
+  .wine-dot  { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .wine-dot-red   { background: var(--wine-light); }
+  .wine-dot-rose  { background: var(--rose); }
+  .wine-dot-white { background: #D4C07A; }
+  .wine-item-name { font-family: 'Cormorant Garamond', serif; font-size: var(--fs-md); font-weight: 500; color: var(--cream); line-height: 1.2; }
+  .wine-item-type { font-family: 'Cormorant Garamond', serif; font-size: var(--fs-sm); font-style: italic; color: rgba(250,247,240,.42); }
+
+  .wine-taca-box {
+    margin-top: 22px; border: .5px solid rgba(242,196,196,.3); padding: 16px 20px;
+    display: flex; align-items: center; justify-content: center; gap: 16px;
+  }
+  .wine-taca-text  { font-family: 'Cormorant Garamond', serif; font-size: var(--fs-base); font-style: italic; color: rgba(250,247,240,.75); }
+  .wine-taca-price { font-family: 'Cinzel', serif; font-size: 18px; letter-spacing: 2px; color: #E8C97A; }
+
+  /* ══ BEBIDAS ═════════════════════════════════ */
+  .refri-list { font-family: 'Cormorant Garamond', serif; font-size: var(--fs-base); color: var(--text-main); line-height: 2; }
+  .beb-row { display: flex; justify-content: space-between; align-items: center; border-bottom: .5px solid rgba(196,169,106,.12); padding: 11px 0; }
+  .beb-row:last-child { border-bottom: none; }
+  .beb-name  { font-family: 'Cormorant Garamond', serif; font-size: var(--fs-md); font-weight: 500; color: var(--text-main); }
+  .beb-price { font-family: 'Cormorant Garamond', serif; font-size: var(--fs-base); color: var(--gold-dark); white-space: nowrap; }
+
+  .chopp-header { display: grid; grid-template-columns: 1fr auto auto; gap: 20px; align-items: center; padding: 7px 0; border-bottom: .5px solid rgba(196,169,106,.18); }
+  .chopp-label  { font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 3px; color: var(--gold-dark); text-transform: uppercase; text-align: center; min-width: 58px; }
+  .chopp-row    { display: grid; grid-template-columns: 1fr auto auto; gap: 20px; align-items: center; padding: 16px 0; }
+
+  /* ══ FOOTER ══════════════════════════════════ */
+  .menu-footer { background: linear-gradient(135deg, #1C2E22 0%, #2A1520 100%); padding: clamp(30px, 7vw, 40px) clamp(22px, 5.5vw, 44px); text-align: center; }
+  .footer-phrase { font-family: 'Cormorant Garamond', serif; font-size: clamp(18px, 5vw, 22px); font-weight: 300; font-style: italic; color: #E8D5A0; margin-bottom: 12px; line-height: 1.55; }
+  .footer-sub { font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 4px; color: rgba(196,169,106,.55); text-transform: uppercase; }
+
+  /* ══ RESPONSIVE ══════════════════════════════ */
+  @media (max-width: 560px) {
+    body { background: var(--cream); }
+    .two-col { grid-template-columns: 1fr; gap: 30px; }
+    .drink-grid { grid-template-columns: 1fr; }
+    .drink-item:nth-child(odd),
+    .drink-item:nth-child(even) { padding-right: 0; padding-left: 0; border-right: none; }
+    .drink-item { border-bottom: .5px solid rgba(196,169,106,.18) !important; }
+    .wine-grid { grid-template-columns: 1fr; }
+    .wine-item[style*="grid-column"] { grid-column: 1 !important; justify-content: flex-start; }
+    .chopp-header, .chopp-row { gap: 12px; }
+    .chopp-label { min-width: 50px; }
+  }
+  @media (max-width: 380px) {
+    .cover-headline { font-size: 38px; }
+    .dish-name { font-size: 19px; }
+    .autoral-name-large { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+<div class="menu-wrapper">
+
+<!-- ══ COVER ═════════════════════════════════════ -->
+<div class="cover">
+  <svg style="position:absolute;top:0;left:0;opacity:0.17;pointer-events:none" width="200" height="220" viewBox="0 0 220 240" fill="none">
+    <path d="M10 200 Q50 130 90 105 Q120 88 140 50" stroke="#F2C4C4" stroke-width="1.2" fill="none"/>
+    <path d="M90 105 Q65 82 48 55" stroke="#F2C4C4" stroke-width="0.8" fill="none"/>
+    <ellipse cx="48" cy="50" rx="20" ry="11" transform="rotate(-30 48 50)" fill="#D4748A" opacity="0.7"/>
+    <path d="M90 105 Q108 78 122 48" stroke="#F2C4C4" stroke-width="0.8" fill="none"/>
+    <ellipse cx="125" cy="44" rx="18" ry="10" transform="rotate(15 125 44)" fill="#A8D5B5" opacity="0.8"/>
+    <path d="M140 50 Q152 26 168 12" stroke="#F2C4C4" stroke-width="0.8" fill="none"/>
+    <ellipse cx="171" cy="9" rx="15" ry="9" transform="rotate(-20 171 9)" fill="#D4748A" opacity="0.6"/>
+    <path d="M10 175 Q32 158 55 168 Q72 176 67 192 Q56 202 38 196 Q20 190 10 175Z" fill="#8A3040" opacity="0.5"/>
+  </svg>
+  <svg style="position:absolute;top:0;right:0;opacity:0.17;transform:scaleX(-1);pointer-events:none" width="200" height="220" viewBox="0 0 220 240" fill="none">
+    <path d="M10 200 Q50 130 90 105 Q120 88 140 50" stroke="#F2C4C4" stroke-width="1.2" fill="none"/>
+    <path d="M90 105 Q65 82 48 55" stroke="#F2C4C4" stroke-width="0.8" fill="none"/>
+    <ellipse cx="48" cy="50" rx="20" ry="11" transform="rotate(-30 48 50)" fill="#D4748A" opacity="0.7"/>
+    <path d="M90 105 Q108 78 122 48" stroke="#F2C4C4" stroke-width="0.8" fill="none"/>
+    <ellipse cx="125" cy="44" rx="18" ry="10" transform="rotate(15 125 44)" fill="#A8D5B5" opacity="0.8"/>
+    <path d="M140 50 Q152 26 168 12" stroke="#F2C4C4" stroke-width="0.8" fill="none"/>
+    <ellipse cx="171" cy="9" rx="15" ry="9" transform="rotate(-20 171 9)" fill="#D4748A" opacity="0.6"/>
+    <path d="M10 175 Q32 158 55 168 Q72 176 67 192 Q56 202 38 196 Q20 190 10 175Z" fill="#8A3040" opacity="0.5"/>
+  </svg>
+  <svg style="position:absolute;bottom:0;left:0;right:0;opacity:0.12;pointer-events:none" width="100%" height="56" viewBox="0 0 720 56" preserveAspectRatio="none" fill="none">
+    <ellipse cx="80" cy="52" rx="30" ry="15" transform="rotate(-20 80 52)" fill="#D4748A"/>
+    <ellipse cx="200" cy="54" rx="22" ry="12" transform="rotate(15 200 54)" fill="#B0394A"/>
+    <ellipse cx="360" cy="50" rx="35" ry="16" transform="rotate(-10 360 50)" fill="#D4748A"/>
+    <ellipse cx="520" cy="53" rx="28" ry="13" transform="rotate(25 520 53)" fill="#B0394A"/>
+    <ellipse cx="650" cy="51" rx="32" ry="14" transform="rotate(-18 650 51)" fill="#D4748A"/>
+  </svg>
+
+  <div class="cover-logo">
+    <svg width="46" height="46" viewBox="0 0 44 44" fill="none">
+      <rect x="8" y="8" width="28" height="28" rx="4" transform="rotate(45 22 22)" stroke="#C4A96A" stroke-width="1"/>
+      <text x="22" y="27" text-anchor="middle" font-family="Cinzel, serif" font-size="14" font-weight="500" fill="#C4A96A">G</text>
+    </svg>
+    <div>
+      <div class="cover-logo-text">Garden Experience</div>
+      <div class="cover-logo-sub">· Restaurante ·</div>
+    </div>
+  </div>
+  <span class="cover-tag">Cardápio Especial</span>
+  <div class="cover-headline">Dia dos<br><em>Namorados</em></div>
+  <div class="cover-subtitle">Uma experiência sensorial para dois</div>
+  <svg style="display:block;margin:0 auto 28px;opacity:0.6" width="160" height="24" viewBox="0 0 160 24" fill="none">
+    <line x1="0" y1="12" x2="54" y2="12" stroke="#C4A96A" stroke-width="0.5"/>
+    <path d="M68 12 C68 9 65 6 62 9 C59 12 62 17 68 20 C74 17 77 12 74 9 C71 6 68 9 68 12Z" fill="#B0394A" opacity="0.8"/>
+    <line x1="82" y1="12" x2="160" y2="12" stroke="#C4A96A" stroke-width="0.5"/>
+    <circle cx="57" cy="12" r="1.5" fill="#C4A96A" opacity="0.5"/>
+    <circle cx="79" cy="12" r="1.5" fill="#C4A96A" opacity="0.5"/>
+  </svg>
+  <div class="cover-date">12 de Junho de 2026</div>
+</div>
+
+<!-- ══ CONTENT ════════════════════════════════════ -->
+<div class="content">
+
+  <div class="botanical-strip">
+    <svg width="100%" height="36" viewBox="0 0 360 36" fill="none" preserveAspectRatio="xMidYMid meet">
+      <line x1="0" y1="18" x2="130" y2="18" stroke="#C4A96A" stroke-width="0.5" opacity="0.5"/>
+      <path d="M148 18 Q156 8 164 18 Q156 28 148 18Z" fill="#2A5240" opacity="0.6"/>
+      <path d="M168 12 Q176 4 184 12 Q176 20 168 12Z" fill="#D4748A" opacity="0.5"/>
+      <path d="M188 18 Q196 8 204 18 Q196 28 188 18Z" fill="#2A5240" opacity="0.6"/>
+      <path d="M176 18 C176 15 173 12 170 15 C167 18 170 22 176 24 C182 22 185 18 182 15 C179 12 176 15 176 18Z" fill="#B0394A" opacity="0.55"/>
+      <line x1="212" y1="18" x2="360" y2="18" stroke="#C4A96A" stroke-width="0.5" opacity="0.5"/>
+      <circle cx="148" cy="18" r="1.5" fill="#C4A96A" opacity="0.6"/>
+      <circle cx="212" cy="18" r="1.5" fill="#C4A96A" opacity="0.6"/>
+    </svg>
+  </div>
+
+  <!-- ─── PETISCOS ─── -->
+  <div class="section-header">
+    <span class="section-tag">Só um petisco</span>
+    <div class="section-title">Porções para começar bem</div>
+  </div>
+
+  <div class="dish">
+    <div>
+      <div class="dish-name">Coxinha de Frango com <em>Catupiry</em> — 10 uni.</div>
+      <div class="dish-desc">A clássica e reconfortante coxinha de frango desfiado, servida sobre uma base cremosa de Catupiry e coberta por parmesão ralado na hora. Cada mordida é um abraço de sabor que vai conquistar seu coração!</div>
+    </div>
+    <div class="dish-price">R$ 66,90</div>
+  </div>
+
+  <div class="dish">
+    <div>
+      <div class="dish-name">Dadinho <em>de Tapioca</em></div>
+      <div class="dish-desc">Cubos dourados de tapioca com queijo coalho, crocantes por fora e macios por dentro, servidos com geleia artesanal que traz um contraste agridoce com leve toque picante.</div>
+    </div>
+    <div class="dish-price">R$ 59,90</div>
+  </div>
+
+  <div class="dish">
+    <div>
+      <div class="dish-name">Pastel <em>de Milho</em></div>
+      <div class="dish-desc">Uma delícia regional com massa crocante e recheio clássico de carne moída bem temperada, um patrimônio da nossa Itajubá.</div>
+    </div>
+    <div class="dish-price">R$ 39,90</div>
+  </div>
+
+  <div class="dish">
+    <div>
+      <div class="dish-name">Torresmo <em>Mineiro</em></div>
+      <div class="dish-desc">Uma iguaria mineira crocante e suculenta que representa o melhor da culinária mineira! Temperada na medida certa e perfeita para acompanhar uma boa conversa e uma bebida gelada.</div>
+    </div>
+    <div class="dish-price">R$ 59,90</div>
+  </div>
+
+  <div class="dish">
+    <div>
+      <div class="dish-name">Iscas de <em>Tilápia</em></div>
+      <div class="dish-desc">Delicadas tiras de tilápia empanadas e douradas, acompanhadas por aioli artesanal com toque cítrico e refrescante do limão.</div>
+    </div>
+    <div class="dish-price">R$ 66,90</div>
+  </div>
+
+  <div class="pair-note">
+    <svg class="leaf-icon" width="22" height="22" viewBox="0 0 20 20" fill="none"><path d="M4 18 Q8 10 16 4 Q16 12 10 16 Q7 17.5 4 18Z" fill="#A8D5B5"/><path d="M10 16 Q8 13 8 10" stroke="#6FA882" stroke-width="0.8" fill="none"/></svg>
+    Sugerimos iniciar com uma taça de vinho rosé para harmonizar com as entradas e criar o clima perfeito para a noite.
+  </div>
+
+  <div class="botanical-strip">
+    <svg width="100%" height="32" viewBox="0 0 300 32" fill="none" preserveAspectRatio="xMidYMid meet">
+      <line x1="0" y1="16" x2="100" y2="16" stroke="#C4A96A" stroke-width="0.5" opacity="0.4"/>
+      <path d="M110 16 Q118 7 126 16" stroke="#2A5240" stroke-width="1" fill="none" opacity="0.5"/>
+      <path d="M126 16 Q134 25 142 16" stroke="#2A5240" stroke-width="1" fill="none" opacity="0.5"/>
+      <path d="M142 16 Q150 7 158 16" stroke="#2A5240" stroke-width="1" fill="none" opacity="0.5"/>
+      <path d="M158 16 Q166 25 174 16" stroke="#2A5240" stroke-width="1" fill="none" opacity="0.5"/>
+      <path d="M174 16 Q182 7 190 16" stroke="#2A5240" stroke-width="1" fill="none" opacity="0.5"/>
+      <path d="M150 16 C150 13 147 10 144 13 C141 16 144 20 150 22 C156 20 159 16 156 13 C153 10 150 13 150 16Z" fill="#B0394A" opacity="0.4"/>
+      <line x1="200" y1="16" x2="300" y2="16" stroke="#C4A96A" stroke-width="0.5" opacity="0.4"/>
+    </svg>
+  </div>
+
+  <!-- ─── SALADAS ─── -->
+  <div class="section-header" style="padding-top:14px;">
+    <span class="section-tag">Da horta à mesa</span>
+    <div class="section-title">Saladas</div>
+  </div>
+
+  <div class="dish">
+    <div>
+      <div class="dish-name">Salada <em>Rústica</em></div>
+      <div class="dish-desc">Um equilíbrio perfeito de folhas frescas como alface e rúcula, combinados com lascas de parmesão, presunto cru e fatias delicadas de cebola roxa. Tudo isso regado com o molho especial da casa, que eleva cada ingrediente a outro nível.</div>
+    </div>
+    <div class="dish-price">R$ 59,90</div>
+  </div>
+
+  <div class="dish">
+    <div>
+      <div class="dish-name">Caesar <em>Salad</em></div>
+      <div class="dish-desc">A clássica Caesar Salad ganha um toque especial com tiras suculentas de frango grelhado. Folhas de alface americana crocante, croutons dourados e lascas de parmesão combinados com o tradicional molho Caesar.</div>
+    </div>
+    <div class="dish-price">R$ 43,90</div>
+  </div>
+
+  <div class="pair-note">
+    <svg class="leaf-icon" width="22" height="22" viewBox="0 0 20 20" fill="none"><path d="M4 18 Q8 10 16 4 Q16 12 10 16 Q7 17.5 4 18Z" fill="#A8D5B5"/><path d="M10 16 Q8 13 8 10" stroke="#6FA882" stroke-width="0.8" fill="none"/></svg>
+    Dica da casa: combine a Salada Caesar com o Salmão em Crosta de Amêndoas para uma entrada completa e sofisticada.
+  </div>
+
+  <div class="botanical-strip" style="padding:16px 0;">
+    <svg width="100%" height="40" viewBox="0 0 380 40" fill="none" preserveAspectRatio="xMidYMid meet">
+      <path d="M30 32 Q60 20 90 12 Q108 7 118 9" stroke="#2A5240" stroke-width="0.9" fill="none" opacity="0.5"/>
+      <ellipse cx="55" cy="19" rx="13" ry="7" transform="rotate(-15 55 19)" fill="#2A5240" opacity="0.3"/>
+      <ellipse cx="82" cy="13" rx="10" ry="6" transform="rotate(-25 82 13)" fill="#D4748A" opacity="0.3"/>
+      <path d="M190 22 C190 18 187 14 183 18 C179 22 183 28 190 32 C197 28 201 22 197 18 C193 14 190 18 190 22Z" fill="#B0394A" opacity="0.4"/>
+      <ellipse cx="190" cy="14" rx="6" ry="4" fill="#D4748A" opacity="0.35"/>
+      <path d="M350 32 Q320 20 290 12 Q272 7 262 9" stroke="#2A5240" stroke-width="0.9" fill="none" opacity="0.5"/>
+      <ellipse cx="325" cy="19" rx="13" ry="7" transform="rotate(15 325 19)" fill="#2A5240" opacity="0.3"/>
+      <ellipse cx="298" cy="13" rx="10" ry="6" transform="rotate(25 298 13)" fill="#D4748A" opacity="0.3"/>
+    </svg>
+  </div>
+
+  <!-- ─── PRATOS PRINCIPAIS ─── -->
+  <div class="section-header" style="padding-top:8px;">
+    <span class="section-tag">Para partilhar</span>
+    <div class="section-title">Pratos Principais</div>
+  </div>
+
+  <div class="sub-section">
+    <div class="sub-section-header">
+      <div class="line"></div>
+      <span class="sub-section-title">🔥 Do Fogo</span>
+      <div class="line"></div>
+    </div>
+
+    <div class="dish dish-highlight">
+      <div>
+        <div class="dish-name">Picanha <em>na Pedra</em></div>
+        <div class="dish-desc">Uma experiência única! Picanha grelhada servida na pedra quente, acompanhada por um mix de legumes salteados na manteiga com ervas frescas. Complemente com farofa crocante, molho barbecue e arroz.</div>
+        <span class="dish-badge">Chef's Choice</span>
+      </div>
+      <div class="dish-price">R$ 199,90</div>
+    </div>
+
+    <div class="dish">
+      <div>
+        <div class="dish-name">Chorizo <em>Acebolado</em></div>
+        <div class="dish-desc">Suculento bife de chorizo grelhado, servido com cebolas caramelizadas e acompanhado por batatas fritas douradinhas, arroz soltinho, farofa crocante, vinagrete fresco e um irresistível molho barbecue.</div>
+      </div>
+      <div class="dish-price">R$ 115,00</div>
+    </div>
+
+    <div class="dish">
+      <div>
+        <div class="dish-name">Garden <em>Mignon</em></div>
+        <div class="dish-desc">Medalhão de filé mignon grelhado, servido com farofa crocante e arroz branco. Escolha entre batata frita, batata ao forno com alecrim, mousseline de batata ou mandioca frita, e um molho à sua escolha: gorgonzola ou vinho.</div>
+      </div>
+      <div class="dish-price">R$ 174,90</div>
+    </div>
+
+    <div class="pair-note-red">
+      <svg class="leaf-icon" width="22" height="22" viewBox="0 0 20 20" fill="none"><path d="M4 18 Q8 10 16 4 Q16 12 10 16 Q7 17.5 4 18Z" fill="#F2C4C4"/><path d="M10 16 Q8 13 8 10" stroke="#E8A0A0" stroke-width="0.8" fill="none"/></svg>
+      Combine a Picanha na Pedra ou o Garden Mignon com um Cabernet Sauvignon — um tinto encorpado que eleva cada corte a outro patamar. Pergunte nossa carta de vinhos!
+    </div>
+  </div>
+
+  <div class="sub-section">
+    <div class="sub-section-header">
+      <div class="line"></div>
+      <span class="sub-section-title">🌊 Do Mar</span>
+      <div class="line"></div>
+    </div>
+
+    <div class="dish">
+      <div>
+        <div class="dish-name">Salmão <em>em Crosta de Amêndoas</em></div>
+        <div class="dish-desc">Posta de salmão assada ao forno, coberta com uma crocante crosta de amêndoas e ervas frescas, realçada por um toque de maracujá. Acompanha legumes assados no azeite aromatizado com limão siciliano, rúcula fresca e tomate confit.</div>
+      </div>
+      <div class="dish-price">R$ 179,90</div>
+    </div>
+
+    <div class="pair-note">
+      <svg class="leaf-icon" width="22" height="22" viewBox="0 0 20 20" fill="none"><path d="M4 18 Q8 10 16 4 Q16 12 10 16 Q7 17.5 4 18Z" fill="#A8D5B5"/><path d="M10 16 Q8 13 8 10" stroke="#6FA882" stroke-width="0.8" fill="none"/></svg>
+      O Salmão harmoniza perfeitamente com um Chardonnay fresco ou com nosso Rosé especial — leveza e elegância que combinam com o mar.
+    </div>
+  </div>
+
+  <div class="sub-section">
+    <div class="sub-section-header">
+      <div class="line"></div>
+      <span class="sub-section-title">🌿 Da Terra</span>
+      <div class="line"></div>
+    </div>
+
+    <div class="two-col" style="margin-bottom:22px;">
+      <div>
+        <div class="col-title">Massas</div>
+        <div class="mini-dish">
+          <div class="mini-dish-name">Talharim ao Molho</div>
+          <div class="mini-dish-desc">Massa longa cozida al dente, mergulhada em creme rico de queijo gorgonzola ou em molho pomodoro rústico de manjericão.</div>
+          <div class="mini-price">R$ 139,90</div>
+        </div>
+      </div>
+      <div>
+        <div class="col-title">Risotos</div>
+        <div class="mini-dish">
+          <div class="mini-dish-name">Risoto de Pera com Gorgonzola</div>
+          <div class="mini-dish-desc">Arroz arbóreo cozido com vinho branco, caldo de legumes e finalizado com parmesão, manteiga e raspas de limão siciliano.</div>
+          <div class="mini-price">R$ 99,90</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="adicional">
+      <div>
+        <div class="adicional-label">Adicional</div>
+        <div class="adicional-name">Adicional de Salmão</div>
+        <div class="adicional-desc">Lâminas extras de salmão fresco para adicionar ao risoto ou massa da sua escolha</div>
+      </div>
+      <div class="adicional-price">+ R$ 85,00</div>
+    </div>
+
+    <div class="adicional">
+      <div>
+        <div class="adicional-label">Adicional</div>
+        <div class="adicional-name">Adicional de Mignon</div>
+        <div class="adicional-desc">Iscas extras de filé mignon para acompanhar sua massa ou risoto</div>
+      </div>
+      <div class="adicional-price">+ R$ 85,00</div>
+    </div>
+
+    <div class="pair-note">
+      <svg class="leaf-icon" width="22" height="22" viewBox="0 0 20 20" fill="none"><path d="M4 18 Q8 10 16 4 Q16 12 10 16 Q7 17.5 4 18Z" fill="#A8D5B5"/><path d="M10 16 Q8 13 8 10" stroke="#6FA882" stroke-width="0.8" fill="none"/></svg>
+      Eleve sua massa ou risoto: adicione salmão fresco ou mignon grelhado (+R$ 85,00) para tornar o prato ainda mais especial.
+    </div>
+  </div>
+
+  <div class="botanical-strip" style="padding:8px 0 4px;">
+    <svg width="220" height="44" viewBox="0 0 220 44" fill="none">
+      <path d="M66 38 Q84 22 110 12 Q136 22 154 38" stroke="#2A5240" stroke-width="0.8" fill="none" opacity="0.5"/>
+      <path d="M110 12 L110 40" stroke="#2A5240" stroke-width="0.8" opacity="0.4"/>
+      <ellipse cx="72" cy="35" rx="11" ry="6" transform="rotate(-20 72 35)" fill="#2A5240" opacity="0.3"/>
+      <ellipse cx="148" cy="35" rx="11" ry="6" transform="rotate(20 148 35)" fill="#2A5240" opacity="0.3"/>
+      <path d="M110 8 C110 5 107 2 104 5 C101 8 104 13 110 16 C116 13 119 8 116 5 C113 2 110 5 110 8Z" fill="#B0394A" opacity="0.45"/>
+    </svg>
+  </div>
+
+  <!-- ─── SOBREMESAS ─── -->
+  <div class="section-header" style="padding-top:18px;">
+    <span class="section-tag">Vai um docinho?</span>
+    <div class="section-title">Sobremesas</div>
+  </div>
+
+  <div class="dish">
+    <div>
+      <div class="dish-name">Creme Brûlée <em>de Doce de Leite</em></div>
+      <div class="dish-desc">A tradicional sobremesa francesa com um toque brasileiro: creme brûlée de doce de leite, com sua crosta caramelizada e interior suave e cremoso, finalizado com uma telha de amêndoas.</div>
+    </div>
+    <div class="dish-price">R$ 29,90</div>
+  </div>
+
+  <div class="dish">
+    <div>
+      <div class="dish-name">Petit Gâteau</div>
+      <div class="dish-desc">Bolo de chocolate com coração fluido, servido quente com sorvete de creme artesanal e calda irresistível. Uma explosão de sabor em cada garfada.</div>
+      <span class="dish-badge">Favorito dos Namorados</span>
+    </div>
+    <div class="dish-price">R$ 28,90</div>
+  </div>
+
+  <div class="dish">
+    <div>
+      <div class="dish-name">Mousse de Maracujá <em>na Taça</em></div>
+      <div class="dish-desc">Mousse levíssima com equilíbrio perfeito entre a acidez tropical do maracujá e a doçura do creme, finalizada com calda e sementes da fruta.</div>
+    </div>
+    <div class="dish-price">R$ 28,90</div>
+  </div>
+
+  <div class="dish">
+    <div>
+      <div class="dish-name">Sorvete <em>Artesanal</em></div>
+      <div class="dish-desc">Seleção de sabores da estação, preparados com frutas frescas e ingredientes naturais.</div>
+    </div>
+    <div class="dish-price">R$ 21,00</div>
+  </div>
+
+  <div class="pair-note-red">
+    <svg class="leaf-icon" width="22" height="22" viewBox="0 0 20 20" fill="none"><path d="M4 18 Q8 10 16 4 Q16 12 10 16 Q7 17.5 4 18Z" fill="#F2C4C4"/><path d="M10 16 Q8 13 8 10" stroke="#E8A0A0" stroke-width="0.8" fill="none"/></svg>
+    O Petit Gâteau com o Moscow Mule é uma combinação surpreendente — o frescor do ginger contrasta perfeitamente com o chocolate quente.
+  </div>
+
+</div><!-- /content -->
+
+<!-- ══ WINE BANNER ════════════════════════════════ -->
+<div class="content" style="padding-bottom:0;">
+<div class="wine-banner">
+  <svg style="position:absolute;top:0;left:0;opacity:0.12;pointer-events:none" width="130" height="110" viewBox="0 0 150 120" fill="none">
+    <path d="M10 100 Q30 70 55 50 Q75 35 90 10" stroke="#F2C4C4" stroke-width="1" fill="none"/>
+    <ellipse cx="38" cy="65" rx="14" ry="8" transform="rotate(-20 38 65)" fill="#D4748A"/>
+    <ellipse cx="62" cy="45" rx="12" ry="7" transform="rotate(-35 62 45)" fill="#B0394A"/>
+    <ellipse cx="82" cy="22" rx="10" ry="6" transform="rotate(-15 82 22)" fill="#D4748A"/>
+  </svg>
+  <svg style="position:absolute;top:0;right:0;opacity:0.12;transform:scaleX(-1);pointer-events:none" width="130" height="110" viewBox="0 0 150 120" fill="none">
+    <path d="M10 100 Q30 70 55 50 Q75 35 90 10" stroke="#F2C4C4" stroke-width="1" fill="none"/>
+    <ellipse cx="38" cy="65" rx="14" ry="8" transform="rotate(-20 38 65)" fill="#D4748A"/>
+    <ellipse cx="62" cy="45" rx="12" ry="7" transform="rotate(-35 62 45)" fill="#B0394A"/>
+    <ellipse cx="82" cy="22" rx="10" ry="6" transform="rotate(-15 82 22)" fill="#D4748A"/>
+  </svg>
+  <span class="wine-header-tag">Para brindar ao amor</span>
+  <div class="wine-header-title">Nossa Carta de Vinhos</div>
+  <div class="wine-header-sub">Taça de vinho a partir de R$ 25,00</div>
+  <div class="wine-grid">
+    <div class="wine-item"><div class="wine-dot wine-dot-red"></div><div><div class="wine-item-name">Carmenère</div><div class="wine-item-type">Tinto · Frutado e aveludado</div></div></div>
+    <div class="wine-item"><div class="wine-dot wine-dot-red"></div><div><div class="wine-item-name">Cabernet Sauvignon</div><div class="wine-item-type">Tinto · Encorpado e intenso</div></div></div>
+    <div class="wine-item"><div class="wine-dot wine-dot-rose"></div><div><div class="wine-item-name">Rosé</div><div class="wine-item-type">Rosé · Delicado e romântico</div></div></div>
+    <div class="wine-item"><div class="wine-dot wine-dot-red"></div><div><div class="wine-item-name">Merlot</div><div class="wine-item-type">Tinto · Suave e elegante</div></div></div>
+    <div class="wine-item" style="grid-column:1/-1;justify-content:center;"><div class="wine-dot wine-dot-white"></div><div><div class="wine-item-name">Chardonnay</div><div class="wine-item-type">Branco · Fresco e aromático — ideal com o salmão</div></div></div>
+  </div>
+  <div class="wine-taca-box">
+    <div class="wine-taca-text">Taça de vinho</div>
+    <div class="wine-taca-price">R$ 25,00</div>
+  </div>
+  <div style="margin-top:16px;">
+    <div style="font-family:'Cormorant Garamond',serif;font-size:15px;font-style:italic;color:rgba(250,247,240,0.45);">Conheça nossa carta completa de vinhos com seu garçom</div>
+  </div>
+</div>
+</div>
+
+<!-- ══ DRINKS ══════════════════════════════════════ -->
+<div class="content" style="padding-top:0;">
+
+  <div class="botanical-strip" style="padding:20px 0 14px;">
+    <svg width="100%" height="28" viewBox="0 0 300 28" fill="none" preserveAspectRatio="xMidYMid meet">
+      <line x1="0" y1="14" x2="100" y2="14" stroke="#C4A96A" stroke-width="0.5" opacity="0.4"/>
+      <path d="M110 14 Q118 6 126 14" stroke="#2A5240" stroke-width="1" fill="none" opacity="0.5"/>
+      <path d="M126 14 Q134 22 142 14" stroke="#2A5240" stroke-width="1" fill="none" opacity="0.5"/>
+      <path d="M142 14 Q150 6 158 14" stroke="#D4748A" stroke-width="1" fill="none" opacity="0.5"/>
+      <path d="M158 14 Q166 22 174 14" stroke="#2A5240" stroke-width="1" fill="none" opacity="0.5"/>
+      <path d="M174 14 Q182 6 190 14" stroke="#2A5240" stroke-width="1" fill="none" opacity="0.5"/>
+      <line x1="200" y1="14" x2="300" y2="14" stroke="#C4A96A" stroke-width="0.5" opacity="0.4"/>
+      <circle cx="150" cy="14" r="2" fill="#B0394A" opacity="0.5"/>
+    </svg>
+  </div>
+
+  <div class="section-header" style="padding-top:8px;">
+    <span class="section-tag">Um brinde!</span>
+    <div class="section-title">Drinks &amp; Coquetéis</div>
+  </div>
+
+  <!-- ══════ COCKTAILS AUTORAIS ══════ -->
+  <div class="autorais-banner">
+    <svg style="position:absolute;top:0;right:0;opacity:0.055;pointer-events:none" width="180" height="300" viewBox="0 0 180 280" fill="none">
+      <path d="M20 260 Q60 190 100 150 Q130 120 155 70" stroke="#A8D5B5" stroke-width="1.5" fill="none"/>
+      <ellipse cx="68" cy="182" rx="22" ry="11" transform="rotate(-20 68 182)" fill="#A8D5B5"/>
+      <ellipse cx="100" cy="148" rx="20" ry="10" transform="rotate(-35 100 148)" fill="#A8D5B5"/>
+      <ellipse cx="130" cy="105" rx="18" ry="9" transform="rotate(-15 130 105)" fill="#A8D5B5"/>
+      <ellipse cx="152" cy="66" rx="16" ry="8" transform="rotate(-25 152 66)" fill="#A8D5B5"/>
+    </svg>
+    <svg style="position:absolute;bottom:0;left:0;opacity:0.055;transform:scaleX(-1);pointer-events:none" width="140" height="200" viewBox="0 0 180 280" fill="none">
+      <path d="M20 260 Q60 190 100 150 Q130 120 155 70" stroke="#A8D5B5" stroke-width="1.5" fill="none"/>
+      <ellipse cx="68" cy="182" rx="22" ry="11" transform="rotate(-20 68 182)" fill="#A8D5B5"/>
+      <ellipse cx="100" cy="148" rx="20" ry="10" transform="rotate(-35 100 148)" fill="#A8D5B5"/>
+    </svg>
+
+    <div class="autorais-header-block">
+      <span class="autorais-tag">Criações exclusivas do bartender</span>
+      <div class="autorais-title">Cocktails Autorais</div>
+      <div class="autorais-sub">Cada drink carrega uma atmosfera, uma memória e um fragmento</div>
+      <div class="autorais-divider">
+        <div class="autorais-divider-line"></div>
+        <div class="autorais-divider-dot"></div>
+        <div class="autorais-divider-line"></div>
+      </div>
+    </div>
+
+    <!-- 01 -->
+    <div class="autoral-card">
+      <div class="autoral-meta">
+        <span class="autoral-num">01</span>
+        <span class="autoral-price-inline">R$ 29,90</span>
+      </div>
+      <div class="autoral-name-large">Jardim <em>de Kyoto</em></div>
+      <div class="autoral-profile">
+        <span class="apill apill-green">Leve</span>
+        <span class="apill apill-green">Herbal</span>
+        <span class="apill apill-green">Refrescante</span>
+      </div>
+      <div class="autoral-ingredients">Saquê · Cordial de melão · Limão fresco · Água com gás · Manjericão</div>
+      <div class="autoral-story">Nas noites mais silenciosas do jardim, o perfume das folhas de manjericão se mistura ao vento úmido e ao frescor delicado do melão. Leve, herbal e luminoso, como caminhar entre lanternas acesas depois da chuva.</div>
+    </div>
+
+    <!-- 02 -->
+    <div class="autoral-card">
+      <div class="autoral-meta">
+        <span class="autoral-num">02</span>
+        <span class="autoral-price-inline">R$ 29,90</span>
+      </div>
+      <div class="autoral-name-large"><em>Último</em> Verão</div>
+      <div class="autoral-profile">
+        <span class="apill apill-gold">Suave</span>
+        <span class="apill apill-gold">Frutado</span>
+        <span class="apill apill-gold">Aveludado</span>
+      </div>
+      <div class="autoral-ingredients">Vodka · Vermute branco · Pêssego · Mel · Limão fresco · Crocante de caju</div>
+      <div class="autoral-story">Quando o calor do dia finalmente desaparece, o jardim permanece carregado pelo perfume doce das frutas maduras e pelo brilho dourado do entardecer. Suave, fresco e delicadamente envolvente. Alguns dias merecem durar para sempre.</div>
+    </div>
+
+    <!-- 03 -->
+    <div class="autoral-card">
+      <div class="autoral-meta">
+        <span class="autoral-num">03</span>
+        <span class="autoral-price-inline">R$ 29,90</span>
+      </div>
+      <div class="autoral-name-large">Hibisco <em>Noturno</em></div>
+      <div class="autoral-profile">
+        <span class="apill apill-rose">Floral</span>
+        <span class="apill apill-rose">Cítrico</span>
+        <span class="apill apill-rose">Marcante</span>
+      </div>
+      <div class="autoral-ingredients">Gin · Cranberry · Hibisco · Limão · Água tônica</div>
+      <div class="autoral-story">Entre luzes difusas e o aroma úmido do jardim, o hibisco revela notas intensas, florais e levemente amargas que permanecem no ar mesmo depois do primeiro gole. Vibrante, cítrico e profundo, como uma noite quente tingida de vermelho.</div>
+    </div>
+
+    <!-- 04 -->
+    <div class="autoral-card">
+      <div class="autoral-meta">
+        <span class="autoral-num">04</span>
+        <span class="autoral-price-inline">R$ 29,90</span>
+      </div>
+      <div class="autoral-name-large">Brasa <em>Tropical</em></div>
+      <div class="autoral-profile">
+        <span class="apill apill-red">Forte</span>
+        <span class="apill apill-red">Defumado</span>
+        <span class="apill apill-red">Intenso</span>
+      </div>
+      <div class="autoral-ingredients">Cachaça envelhecida · Maracujá · Gengibre · Canela defumada</div>
+      <div class="autoral-story">O cheiro da canela queimando se mistura ao calor da madeira e à acidez viva do maracujá. Intenso, quente e perigosamente fácil de beber.</div>
+    </div>
+
+    <!-- 05 -->
+    <div class="autoral-card">
+      <div class="autoral-meta">
+        <span class="autoral-num">05</span>
+        <span class="autoral-price-inline">R$ 29,90</span>
+      </div>
+      <div class="autoral-name-large">Bruma <em>da Serra</em></div>
+      <div class="autoral-profile">
+        <span class="apill apill-gold">Tropical</span>
+        <span class="apill apill-red">Amargo</span>
+        <span class="apill apill-green">Envolvente</span>
+      </div>
+      <div class="autoral-ingredients">Rum · Abacaxi fresco · Campari · Cítricos</div>
+      <div class="autoral-story">O perfume das frutas maduras e o ar úmido da madrugada — o rum revela notas tropicais, cítricas e levemente amargas que permanecem lentamente no paladar. Intenso, quente e envolvente, como luzes vermelhas atravessando a fumaça no coração do jardim.</div>
+    </div>
+
+    <div class="autorais-price-footer">
+      <div class="autorais-price-label">Todos os cocktails autorais</div>
+      <div class="autorais-price-sep"></div>
+      <div class="autorais-price-value">R$ 29,90</div>
+    </div>
+  </div>
+
+  <!-- ─── DRINKS CLÁSSICOS ─── -->
+  <div class="sub-section-header" style="margin-top:36px;">
+    <div class="line"></div>
+    <span class="sub-section-title">Drinks Clássicos</span>
+    <div class="line"></div>
+  </div>
+
+  <div class="drink-grid">
+    <div class="drink-item">
+      <div class="drink-name">Mojito <em>Garden</em></div>
+      <div class="drink-tags">Refrescante · Cítrico · Herbal</div>
+      <div class="drink-price">R$ 21,00</div>
+    </div>
+    <div class="drink-item">
+      <div class="drink-name">Margarita <em>Garden</em></div>
+      <div class="drink-tags">Forte · Cítrico · Levemente salgado</div>
+      <div class="drink-price">R$ 30,00</div>
+    </div>
+    <div class="drink-item">
+      <div class="drink-name">Moscow <em>Mule</em></div>
+      <div class="drink-tags">Picante · Refrescante · Cítrico</div>
+      <div class="drink-price">R$ 22,00</div>
+    </div>
+    <div class="drink-item">
+      <div class="drink-name">Sex on <em>the Beach</em></div>
+      <div class="drink-tags">Doce · Frutado · Tropical</div>
+      <div class="drink-price">R$ 22,00</div>
+    </div>
+    <div class="drink-item">
+      <div class="drink-name">Aperol <em>Spritz</em></div>
+      <div class="drink-tags">Levemente amargo · Borbulhante · Festivo</div>
+      <div class="drink-price">R$ 30,00</div>
+    </div>
+    <div class="drink-item">
+      <div class="drink-name">Lagoa <em>Azul</em></div>
+      <div class="drink-tags">Tropical · Doce · Visual único</div>
+      <div class="drink-price">R$ 24,00</div>
+    </div>
+    <div class="drink-item" style="border-bottom:none;">
+      <div class="drink-name">Negroni</div>
+      <div class="drink-tags">Amargo · Encorpado · Sofisticado</div>
+      <div class="drink-price">R$ 35,00</div>
+    </div>
+    <div class="drink-item" style="border-bottom:none;"></div>
+  </div>
+
+  <div class="pair-note" style="margin-top:26px;">
+    <svg class="leaf-icon" width="22" height="22" viewBox="0 0 20 20" fill="none"><path d="M4 18 Q8 10 16 4 Q16 12 10 16 Q7 17.5 4 18Z" fill="#A8D5B5"/><path d="M10 16 Q8 13 8 10" stroke="#6FA882" stroke-width="0.8" fill="none"/></svg>
+    Para a noite dos namorados, sugerimos o Aperol Spritz para começar — leve e festivo — e o Negroni para acompanhar as carnes. Romantismo em cada gole.
+  </div>
+
+  <!-- ─── BEBIDAS ─── -->
+  <div class="botanical-strip" style="padding:22px 0 14px;">
+    <svg width="100%" height="28" viewBox="0 0 300 28" fill="none" preserveAspectRatio="xMidYMid meet">
+      <line x1="0" y1="14" x2="90" y2="14" stroke="#C4A96A" stroke-width="0.5" opacity="0.4"/>
+      <path d="M100 14 Q108 6 116 14" stroke="#2A5240" stroke-width="1" fill="none" opacity="0.5"/>
+      <path d="M116 14 Q124 22 132 14" stroke="#2A5240" stroke-width="1" fill="none" opacity="0.5"/>
+      <path d="M132 14 Q140 6 148 14" stroke="#D4748A" stroke-width="1" fill="none" opacity="0.5"/>
+      <path d="M148 14 Q156 22 164 14" stroke="#2A5240" stroke-width="1" fill="none" opacity="0.5"/>
+      <path d="M164 14 Q172 6 180 14" stroke="#2A5240" stroke-width="1" fill="none" opacity="0.5"/>
+      <line x1="190" y1="14" x2="300" y2="14" stroke="#C4A96A" stroke-width="0.5" opacity="0.4"/>
+      <circle cx="140" cy="14" r="2" fill="#B0394A" opacity="0.5"/>
+    </svg>
+  </div>
+
+  <div class="section-header" style="padding-top:8px;">
+    <span class="section-tag">Leves, geladas e indispensáveis</span>
+    <div class="section-title">Bebidas</div>
+  </div>
+
+  <div class="sub-section">
+    <div class="sub-section-header">
+      <div class="line"></div>
+      <span class="sub-section-title">Refrigerantes</span>
+      <div class="line"></div>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:14px;padding-bottom:22px;border-bottom:.5px solid rgba(196,169,106,.2);">
+      <div class="refri-list">
+        Coca Cola · Coca Cola Zero · Guaraná Antártica<br>
+        Guaraná Antártica Zero · Sprite · Fanta Laranja<br>
+        Fanta Uva · Água Tônica · Schweppes Citrus
+      </div>
+      <div class="dish-price" style="flex-shrink:0;padding-top:4px;">R$ 7,00</div>
+    </div>
+  </div>
+
+  <div class="sub-section">
+    <div class="sub-section-header">
+      <div class="line"></div>
+      <span class="sub-section-title">Águas &amp; Outros</span>
+      <div class="line"></div>
+    </div>
+    <div class="two-col" style="margin-bottom:4px;">
+      <div>
+        <div class="beb-row"><span class="beb-name">Água com Gás</span><span class="beb-price">R$ 6,50</span></div>
+        <div class="beb-row"><span class="beb-name">Água sem Gás</span><span class="beb-price">R$ 6,00</span></div>
+        <div class="beb-row"><span class="beb-name">Red Bull</span><span class="beb-price">R$ 16,00</span></div>
+      </div>
+      <div>
+        <div class="beb-row"><span class="beb-name">H2O</span><span class="beb-price">R$ 8,90</span></div>
+        <div class="beb-row"><span class="beb-name">H2O Limoneto</span><span class="beb-price">R$ 8,90</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub-section">
+    <div class="sub-section-header">
+      <div class="line"></div>
+      <span class="sub-section-title">Chopp</span>
+      <div class="line"></div>
+    </div>
+    <div class="chopp-header">
+      <div></div>
+      <div class="chopp-label">Pequeno</div>
+      <div class="chopp-label">Grande</div>
+    </div>
+    <div class="chopp-row">
+      <div class="dish-name" style="font-size:21px;">Brahma</div>
+      <div class="dish-price" style="text-align:center;min-width:58px;">R$ 12</div>
+      <div class="dish-price" style="text-align:center;min-width:58px;">R$ 18</div>
+    </div>
+  </div>
+
+  <div class="sub-section">
+    <div class="sub-section-header">
+      <div class="line"></div>
+      <span class="sub-section-title">Cervejas</span>
+      <div class="line"></div>
+    </div>
+    <div class="two-col">
+      <div>
+        <div class="col-title">Garrafa 600ml</div>
+        <div class="beb-row"><span class="beb-name">Baden Baden</span><span class="beb-price">R$ 27</span></div>
+        <div class="beb-row"><span class="beb-name">Heineken</span><span class="beb-price">R$ 18</span></div>
+        <div class="beb-row"><span class="beb-name">Original</span><span class="beb-price">R$ 16</span></div>
+        <div class="beb-row"><span class="beb-name">Stella</span><span class="beb-price">R$ 16</span></div>
+        <div class="beb-row" style="border-bottom:none;"><span class="beb-name">Artois</span><span class="beb-price">R$ 16</span></div>
+      </div>
+      <div>
+        <div class="col-title">Long Neck</div>
+        <div class="beb-row"><span class="beb-name">Corona</span><span class="beb-price">R$ 11</span></div>
+        <div class="beb-row"><span class="beb-name">Heineken</span><span class="beb-price">R$ 11</span></div>
+        <div class="beb-row"><span class="beb-name">Heineken Zero</span><span class="beb-price">R$ 11</span></div>
+        <div class="beb-row"><span class="beb-name">IPA</span><span class="beb-price">R$ 11</span></div>
+        <div class="beb-row" style="border-bottom:none;"><span class="beb-name">Sour Goiabada</span><span class="beb-price">R$ 11</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub-section">
+    <div class="sub-section-header">
+      <div class="line"></div>
+      <span class="sub-section-title">Sucos &amp; Sem Álcool</span>
+      <div class="line"></div>
+    </div>
+
+    <div style="margin-bottom:24px;padding-bottom:24px;border-bottom:.5px solid rgba(196,169,106,.2);">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:7px;">
+        <div class="dish-name" style="font-size:21px;">Lemonades</div>
+        <div class="dish-price">R$ 15,00</div>
+      </div>
+      <div class="dish-desc">Refrescante limonada de limão siciliano, preparada na hora com sabores especiais.</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--green-mid);margin-top:6px;font-weight:500;letter-spacing:.3px;">Sabores: Mirtilo · Morango · Framboesa · Amora · Grenadine</div>
+    </div>
+
+    <div style="margin-bottom:24px;padding-bottom:24px;border-bottom:.5px solid rgba(196,169,106,.2);">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:7px;">
+        <div class="dish-name" style="font-size:21px;">Soda Italiana</div>
+        <div class="dish-price">R$ 15,00</div>
+      </div>
+      <div class="dish-desc">Refrescante Soda Italiana, preparada na hora com sabores especiais.</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--green-mid);margin-top:6px;font-weight:500;letter-spacing:.3px;">Sabores: Mirtilo · Morango · Cramberry · Groselha</div>
+    </div>
+
+    <div class="adicional">
+      <div>
+        <div class="adicional-label">Sucos Simples · Copo 300ml</div>
+        <div class="adicional-name">Suco Simples</div>
+        <div class="adicional-desc">Laranja · Limão · Morango · Maracujá · Abacaxi</div>
+      </div>
+      <div class="adicional-price">R$ 12</div>
+    </div>
+
+    <div class="adicional">
+      <div>
+        <div class="adicional-label">Limonada Suíça · Copo 300ml</div>
+        <div class="adicional-name">Limonada Suíça</div>
+        <div class="adicional-desc">Laranja · Limão · Morango · Maracujá · Abacaxi</div>
+      </div>
+      <div class="adicional-price">R$ 12</div>
+    </div>
+
+    <div class="adicional" style="margin-bottom:0;">
+      <div>
+        <div class="adicional-label">Sucos Misto · Copo 300ml</div>
+        <div class="adicional-name">Suco Misto</div>
+        <div class="adicional-desc">Laranja · Limão · Morango · Maracujá · Abacaxi</div>
+      </div>
+      <div class="adicional-price">R$ 12</div>
+    </div>
+  </div>
+
+</div><!-- /content drinks -->
+
+<!-- ══ FOOTER ══════════════════════════════════════ -->
+<div class="menu-footer">
+  <svg style="display:block;margin:0 auto 24px;opacity:0.38" width="260" height="20" viewBox="0 0 300 20" fill="none">
+    <line x1="0" y1="10" x2="108" y2="10" stroke="#C4A96A" stroke-width="0.5"/>
+    <path d="M150 10 C150 7 147 4 144 7 C141 10 144 15 150 18 C156 15 159 10 156 7 C153 4 150 7 150 10Z" fill="#B0394A" opacity="0.6"/>
+    <line x1="192" y1="10" x2="300" y2="10" stroke="#C4A96A" stroke-width="0.5"/>
+    <path d="M120 10 Q130 3 138 10 Q130 17 120 10" stroke="#A8D5B5" stroke-width="0.8" fill="none" opacity="0.6"/>
+    <path d="M180 10 Q170 3 162 10 Q170 17 180 10" stroke="#A8D5B5" stroke-width="0.8" fill="none" opacity="0.6"/>
+  </svg>
+  <div class="footer-phrase">Cada detalhe pensado<br>para transformar momentos em memórias.</div>
+  <div style="margin:18px 0;">
+    <svg style="display:inline-block;opacity:0.45" width="80" height="16" viewBox="0 0 80 16" fill="none">
+      <line x1="0" y1="8" x2="28" y2="8" stroke="#C4A96A" stroke-width="0.5"/>
+      <path d="M40 8 C40 5 37 2 34 5 C31 8 34 12 40 14 C46 12 49 8 46 5 C43 2 40 5 40 8Z" fill="#B0394A" opacity="0.7"/>
+      <line x1="52" y1="8" x2="80" y2="8" stroke="#C4A96A" stroke-width="0.5"/>
+    </svg>
+  </div>
+  <div class="footer-sub">Garden Experience · Restaurante · Itajubá</div>
+</div>
+
+</div><!-- /menu-wrapper -->
+</body>
+</html>
